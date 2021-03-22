@@ -46,7 +46,6 @@ namespace LOJA_API.Controllers
             {
                 produtoValidation.validate(produto);
 
-                produto.PromocaoAtiva = true;
                 produto = produtoServico.Salvar(produto);
 
                 return StatusCode(StatusCodes.Status201Created, produto);
@@ -96,8 +95,7 @@ namespace LOJA_API.Controllers
 
                 if (produto != null)
                 {
-                    produto.PromocaoAtiva = false;
-                    produtoServico.Atualizar(produto);
+                    produtoServico.Deletar(produto);
                 }
                 else
                 {

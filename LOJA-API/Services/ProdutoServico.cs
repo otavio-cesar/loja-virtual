@@ -12,7 +12,19 @@ namespace Servicos
 
         public virtual IList<Produto> ObterTodosAtivos()
         {
-            return ObterTodos().Where(p => p.PromocaoAtiva ?? false == true).ToList();
+            return base.ObterTodos().Where(p => p.PromocaoAtiva ?? false == true).ToList();
+        }
+
+        public override Produto Salvar(Produto produto)
+        {
+            produto.PromocaoAtiva = true;
+            return base.Salvar(produto);
+        }
+
+        public override void Deletar(Produto produto)
+        {
+            produto.PromocaoAtiva = false;
+            base.Atualizar(produto);
         }
     }
 }

@@ -56,11 +56,11 @@ namespace Model.Servicos
             }
         }
 
-        public virtual void Deletar(int id)
+        public virtual void Deletar(T entity)
         {
             try
             {
-                reuniaoContext.Set<T>().Remove(ObterPorId(id));
+                reuniaoContext.Set<T>().Remove(entity);
 
                 reuniaoContext.SaveChanges();
             }
